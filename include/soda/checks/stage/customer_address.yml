@@ -1,0 +1,23 @@
+checks for CUSTOMER_ADDRESS:
+  - missing_count(CUSTOMER_ID) = 0
+  - missing_count(ADDRESS_ID) = 0
+  - min(CUSTOMER_ID) >= 0
+  - min(ADDRESS_ID) >= 0
+  - duplicate_count(CUSTOMER_ID, ADDRESS_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - CUSTOMER_ID
+          - ADDRESS_ID
+          - STATUS_ID
+        when wrong column type:
+          CUSTOMER_ID: integer
+          ADDRESS_ID: integer
+          STATUS_ID: integer
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

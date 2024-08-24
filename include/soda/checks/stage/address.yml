@@ -1,0 +1,27 @@
+checks for ADDRESS:
+  - missing_count(ADDRESS_ID) = 0
+  - missing_count(COUNTRY_ID) = 0
+  - min(ADDRESS_ID) >= 0
+  - min(COUNTRY_ID) >= 0
+  - duplicate_count(ADDRESS_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - ADDRESS_ID
+          - STREET_NUMBER
+          - STREET_NAME
+          - CITY
+          - COUNTRY_ID
+        when wrong column type:
+          ADDRESS_ID: integer
+          STREET_NUMBER: string
+          STREET_NAME: string
+          CITY: string
+          COUNTRY_ID: integer
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

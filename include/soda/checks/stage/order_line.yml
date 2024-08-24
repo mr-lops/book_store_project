@@ -1,0 +1,23 @@
+checks for ORDER_LINE:
+  - missing_count(LINE_ID) = 0
+  - min(LINE_ID) >= 0
+  - duplicate_count(LINE_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - LINE_ID
+          - ORDER_ID
+          - BOOK_ID
+          - PRICE
+        when wrong column type:
+          LINE_ID: integer
+          ORDER_ID: integer
+          BOOK_ID: integer
+          PRICE: decimal
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

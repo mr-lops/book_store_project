@@ -1,0 +1,23 @@
+checks for ORDER_HISTORY:
+  - missing_count(HISTORY_ID) = 0
+  - min(HISTORY_ID) >= 0
+  - duplicate_count(HISTORY_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - HISTORY_ID
+          - ORDER_ID
+          - STATUS_ID
+          - STATUS_DATE
+        when wrong column type:
+          HISTORY_ID: integer
+          ORDER_ID: integer
+          STATUS_ID: integer
+          STATUS_DATE: datetime
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

@@ -1,0 +1,25 @@
+checks for CUST_ORDER:
+  - missing_count(ORDER_ID) = 0
+  - min(ORDER_ID) >= 0
+  - duplicate_count(ORDER_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - ORDER_ID
+          - ORDER_DATE
+          - CUSTOMER_ID
+          - SHIPPING_METHOD_ID
+          - DEST_ADDRESS_ID
+        when wrong column type:
+          ORDER_ID: integer
+          ORDER_DATE: datetime
+          CUSTOMER_ID: integer
+          SHIPPING_METHOD_ID: integer
+          DEST_ADDRESS_ID: integer
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

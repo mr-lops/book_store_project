@@ -1,0 +1,27 @@
+data_source stage:
+  type: snowflake
+  username: ${SNOWFLAKE_USER}
+  password: ${SNOWFLAKE_PASSWORD}
+  account: ${SNOWFLAKE_ACCOUNT}
+  database: 'bookstore_db'
+  warehouse: 'bookstore_wh'
+  connection_timeout: 240
+  role: 'bookstore_role'
+  schema: 'stage_schema'
+
+data_source book_store:
+  type: snowflake
+  username: ${SNOWFLAKE_USER}
+  password: ${SNOWFLAKE_PASSWORD}
+  account: ${SNOWFLAKE_ACCOUNT}
+  database: 'bookstore_db'
+  warehouse: 'bookstore_wh'
+  connection_timeout: 240
+  role: 'bookstore_role'
+  schema: 'bookstore_schema'
+
+
+soda_cloud:
+  host: ${SODA_API_HOST}
+  api_key_id: ${SODA_API_KEY_ID}
+  api_key_secret: ${SODA_API_KEY_SECRET}

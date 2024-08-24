@@ -1,0 +1,21 @@
+checks for BOOK_LANGUAGE:
+  - missing_count(LANGUAGE_ID) = 0
+  - min(LANGUAGE_ID) >= 0
+  - duplicate_count(LANGUAGE_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - LANGUAGE_ID
+          - LANGUAGE_CODE
+          - LANGUAGE_NAME
+        when wrong column type:
+          LANGUAGE_ID: integer
+          LANGUAGE_CODE: string
+          LANGUAGE_NAME: string
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

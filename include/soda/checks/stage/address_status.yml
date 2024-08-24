@@ -1,0 +1,19 @@
+checks for ADDRESS_STATUS:
+  - missing_count(STATUS_ID) = 0
+  - min(STATUS_ID) >= 0
+  - duplicate_count(STATUS_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - STATUS_ID
+          - ADDRESS_STATUS
+        when wrong column type:
+          STATUS_ID: integer
+          ADDRESS_STATUS: string
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

@@ -1,0 +1,19 @@
+checks for COUNTRY:
+  - missing_count(COUNTRY_ID) = 0
+  - min(COUNTRY_ID) >= 0
+  - duplicate_count(COUNTRY_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - COUNTRY_ID
+          - COUNTRY_NAME
+        when wrong column type:
+          COUNTRY_ID: integer
+          COUNTRY_NAME: string
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

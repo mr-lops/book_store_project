@@ -1,0 +1,23 @@
+checks for CUSTOMER:
+  - missing_count(CUSTOMER_ID) = 0
+  - min(CUSTOMER_ID) >= 0
+  - duplicate_count(CUSTOMER_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - CUSTOMER_ID
+          - FIRST_NAME
+          - LAST_NAME
+          - EMAIL
+        when wrong column type:
+          CUSTOMER_ID: integer
+          FIRST_NAME: string
+          LAST_NAME: string
+          EMAIL: string
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change

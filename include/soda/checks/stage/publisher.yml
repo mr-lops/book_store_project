@@ -1,0 +1,19 @@
+checks for PUBLISHER:
+  - missing_count(PUBLISHER_ID) = 0
+  - min(PUBLISHER_ID) >= 0
+  - duplicate_count(PUBLISHER_ID) = 0
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when required column missing:
+          - PUBLISHER_ID
+          - PUBLISHER_NAME
+        when wrong column type:
+          PUBLISHER_ID: integer
+          PUBLISHER_NAME: string
+        when schema changes:
+          - column delete
+          - column add
+          - column index change
+          - column type change
