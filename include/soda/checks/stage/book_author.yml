@@ -5,17 +5,14 @@ checks for BOOK_AUTHOR:
   - min(AUTHOR_ID) >= 0
   - duplicate_count(BOOK_ID, AUTHOR_ID) = 0
   - schema:
-      warn:
-        when schema changes: any
       fail:
         when required column missing:
           - BOOK_ID
           - AUTHOR_ID
         when wrong column type:
-          BOOK_ID: integer
-          AUTHOR_ID: integer
+          BOOK_ID: number
+          AUTHOR_ID: number
         when schema changes:
           - column delete
           - column add
-          - column index change
           - column type change

@@ -13,7 +13,7 @@ FROM customer c
 INNER JOIN customer_address ca ON c.customer_id = ca.customer_id
 LIMIT 2500;
 */
-DELETE FROM cust_order;
+-- DELETE FROM cust_order;
 
 
 /* Add 2500 orders */

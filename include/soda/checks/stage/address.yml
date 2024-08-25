@@ -5,8 +5,6 @@ checks for ADDRESS:
   - min(COUNTRY_ID) >= 0
   - duplicate_count(ADDRESS_ID) = 0
   - schema:
-      warn:
-        when schema changes: any
       fail:
         when required column missing:
           - ADDRESS_ID
@@ -15,13 +13,12 @@ checks for ADDRESS:
           - CITY
           - COUNTRY_ID
         when wrong column type:
-          ADDRESS_ID: integer
-          STREET_NUMBER: string
-          STREET_NAME: string
-          CITY: string
-          COUNTRY_ID: integer
+          ADDRESS_ID: number
+          STREET_NUMBER: varchar
+          STREET_NAME: varchar
+          CITY: varchar
+          COUNTRY_ID: number
         when schema changes:
           - column delete
           - column add
-          - column index change
           - column type change

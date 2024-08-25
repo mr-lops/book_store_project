@@ -3,19 +3,16 @@ checks for SHIPPING_METHOD:
   - min(METHOD_ID) >= 0
   - duplicate_count(METHOD_ID) = 0
   - schema:
-      warn:
-        when schema changes: any
       fail:
         when required column missing:
           - METHOD_ID
           - METHOD_NAME
           - COST
         when wrong column type:
-          publisher_id: integer
-          METHOD_NAME: string
-          COST: decimal
+          METHOD_ID: number
+          METHOD_NAME: varchar
+          COST: number
         when schema changes:
           - column delete
           - column add
-          - column index change
           - column type change

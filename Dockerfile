@@ -12,3 +12,11 @@ RUN python -m venv soda_venv && \
 #     source dbt_venv/bin/activate && \
 #     pip install --no-cache-dir dbt-snowflake==1.8.3 && \
 #     deactivate
+
+RUN python -m venv polars_venv && \
+    source polars_venv/bin/activate && \
+    pip install --no-cache-dir polars==1.5.0 && \
+    pip install --no-cache-dir connectorx==0.3.3 && \
+    pip install --no-cache-dir adbc-driver-snowflake==1.1.0&& \
+    pip install --no-cache-dir pyarrow==17.0.0 && \
+    deactivate

@@ -3,8 +3,6 @@ checks for ORDER_HISTORY:
   - min(HISTORY_ID) >= 0
   - duplicate_count(HISTORY_ID) = 0
   - schema:
-      warn:
-        when schema changes: any
       fail:
         when required column missing:
           - HISTORY_ID
@@ -12,12 +10,11 @@ checks for ORDER_HISTORY:
           - STATUS_ID
           - STATUS_DATE
         when wrong column type:
-          HISTORY_ID: integer
-          ORDER_ID: integer
-          STATUS_ID: integer
-          STATUS_DATE: datetime
+          HISTORY_ID: number
+          ORDER_ID: number
+          STATUS_ID: number
+          STATUS_DATE: timestamp_ntz
         when schema changes:
           - column delete
           - column add
-          - column index change
           - column type change

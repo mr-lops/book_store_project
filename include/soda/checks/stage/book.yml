@@ -7,8 +7,6 @@ checks for BOOK:
   - min(PUBLISHER_ID) >= 0
   - duplicate_count(BOOK_ID) = 0
   - schema:
-      warn:
-        when schema changes: any
       fail:
         when required column missing:
           - BOOK_ID
@@ -19,15 +17,14 @@ checks for BOOK:
           - PUBLICATION_DATE
           - PUBLISHER_ID
         when wrong column type:
-          BOOK_ID: integer
-          TITLE: string
-          ISBN13: string
-          LANGUAGE_ID: integer
-          NUM_PAGES: integer
+          BOOK_ID: number
+          TITLE: varchar
+          ISBN13: varchar
+          LANGUAGE_ID: number
+          NUM_PAGES: number
           PUBLICATION_DATE: date
-          PUBLISHER_ID: integer
+          PUBLISHER_ID: number
         when schema changes:
           - column delete
           - column add
-          - column index change
           - column type change

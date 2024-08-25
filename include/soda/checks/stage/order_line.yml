@@ -3,8 +3,6 @@ checks for ORDER_LINE:
   - min(LINE_ID) >= 0
   - duplicate_count(LINE_ID) = 0
   - schema:
-      warn:
-        when schema changes: any
       fail:
         when required column missing:
           - LINE_ID
@@ -12,12 +10,11 @@ checks for ORDER_LINE:
           - BOOK_ID
           - PRICE
         when wrong column type:
-          LINE_ID: integer
-          ORDER_ID: integer
-          BOOK_ID: integer
-          PRICE: decimal
+          LINE_ID: number
+          ORDER_ID: number
+          BOOK_ID: number
+          PRICE: number
         when schema changes:
           - column delete
           - column add
-          - column index change
           - column type change

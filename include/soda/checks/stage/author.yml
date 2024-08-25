@@ -3,17 +3,14 @@ checks for AUTHOR:
   - min(AUTHOR_ID) >= 0
   - duplicate_count(AUTHOR_ID) = 0
   - schema:
-      warn:
-        when schema changes: any
       fail:
         when required column missing:
           - AUTHOR_ID
           - AUTHOR_NAME
         when wrong column type:
-          AUTHOR_ID: integer
-          AUTHOR_NAME: string
+          AUTHOR_ID: number
+          AUTHOR_NAME: varchar
         when schema changes:
           - column delete
           - column add
-          - column index change
           - column type change

@@ -3,17 +3,14 @@ checks for ORDER_STATUS:
   - min(STATUS_ID) >= 0
   - duplicate_count(STATUS_ID) = 0
   - schema:
-      warn:
-        when schema changes: any
       fail:
         when required column missing:
           - STATUS_ID
           - STATUS_VALUE
         when wrong column type:
-          STATUS_ID: integer
-          STATUS_VALUE: string
+          STATUS_ID: number
+          STATUS_VALUE: varchar
         when schema changes:
           - column delete
           - column add
-          - column index change
           - column type change

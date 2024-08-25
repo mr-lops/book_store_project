@@ -16,7 +16,6 @@ grant all on database bookstore_db to role bookstore_role;
 
 use role bookstore_role;
 create schema bookstore_db.stage_schema;
-create schema bookstore_db.bookstore_schema;
 
 use role accountadmin;
 drop warehouse if exists bookstore_wh;

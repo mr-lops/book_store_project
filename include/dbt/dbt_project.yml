@@ -1,0 +1,12 @@
+name: "book_store"
+
+profile: "book_store"
+
+version: 2
+
+models:
+  intermediate:
+    +schema: bookstore_schema
+    materialized: table
+  report:
+    materialized: view
