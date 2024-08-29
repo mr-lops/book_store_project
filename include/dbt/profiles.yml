@@ -2,24 +2,13 @@ book_store:
   outputs:
     dev:
       type: snowflake
-      account: ${SNOWFLAKE_ACCOUNT}
-      user: ${SNOWFLAKE_USER}
-      password: ${SNOWFLAKE_PASSWORD}
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
       role: 'bookstore_role'
       database: 'bookstore_db'
       warehouse: 'bookstore_wh'
       schema: 'bookstore_schema'
       client_session_keep_alive: False
     
-    staging:
-      type: snowflake
-      account: ${SNOWFLAKE_ACCOUNT}
-      user: ${SNOWFLAKE_USER}
-      password: ${SNOWFLAKE_PASSWORD}
-      role: 'bookstore_role'
-      database: 'bookstore_db'
-      warehouse: 'bookstore_wh'
-      schema: 'stage_schema'
-      client_session_keep_alive: False
-    
-  target: staging
+  target: dev

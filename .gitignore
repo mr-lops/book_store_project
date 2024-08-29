@@ -14,5 +14,3 @@ include/dbt/target
 include/dbt/logs
 include/dbt/.user.yml
 .vscode/
-astro_env/
-.mypy_cache/

@@ -8,10 +8,10 @@ RUN python -m venv soda_venv && \
     deactivate
 
 # install dbt into a virtual environment
-# RUN python -m venv dbt_venv && \
-#     source dbt_venv/bin/activate && \
-#     pip install --no-cache-dir dbt-snowflake==1.8.3 && \
-#     deactivate
+RUN python -m venv dbt_venv && \
+    source dbt_venv/bin/activate && \
+    pip install --no-cache-dir dbt-snowflake==1.8.3 && \
+    deactivate
 
 RUN python -m venv polars_venv && \
     source polars_venv/bin/activate && \

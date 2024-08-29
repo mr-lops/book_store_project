@@ -10,5 +10,3 @@ Makefile
 book_store_db/
 snowflake.sql
 .vscode/
-astro_env/
-.mypy_cache/

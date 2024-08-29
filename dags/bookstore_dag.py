@@ -2,7 +2,7 @@ from airflow.decorators import dag, task, task_group
 from datetime import datetime, timedelta
 import os
 
-from include.dbt.cosmos_config import DBT_PROJECT_CONFIG, DBT_CONFIG_DEV, DBT_CONFIG_STAGE
+from include.dbt.cosmos_config import DBT_PROJECT_CONFIG, DBT_CONFIG
 
 from cosmos.airflow.task_group import DbtTaskGroup
 from cosmos.constants import LoadMode
@@ -91,7 +91,7 @@ def bookstore_pipeline():
     data_warehouse = DbtTaskGroup(
         group_id='data_warehouse',
         project_config=DBT_PROJECT_CONFIG,
-        profile_config=DBT_CONFIG_STAGE,
+        profile_config=DBT_CONFIG,
         render_config=RenderConfig(
             load_method=LoadMode.DBT_LS,
             select=['path:models/intermediate']
@@ -107,7 +107,7 @@ def bookstore_pipeline():
     report = DbtTaskGroup(
         group_id='report',
         project_config=DBT_PROJECT_CONFIG,
-        profile_config=DBT_CONFIG_DEV,
+        profile_config=DBT_CONFIG,
         render_config=RenderConfig(
             load_method=LoadMode.DBT_LS,
             select=['path:models/report']

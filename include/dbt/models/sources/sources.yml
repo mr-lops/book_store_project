@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: book_store_stage
+    database: bookstore_db
+    schema: stage_schema
+
+    tables:
+      - name: address_status
+      - name: address
+      - name: author
+      - name: book_author
+      - name: book_language
+      - name: book
+      - name: country
+      - name: cust_order
+      - name: customer_address
+      - name: customer
+      - name: order_history
+      - name: order_line
+      - name: order_status
+      - name: publisher
+      - name: shipping_method
+
+  - name: book_store_data
+    database: bookstore_db
+    schema: bookstore_schema
+
+    tables:
+      - name: dim_customer
+      - name: dim_book
+      - name: dim_shipping
+      - name: fact_sales

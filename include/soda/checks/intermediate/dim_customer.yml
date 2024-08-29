@@ -1,0 +1,19 @@
+checks for DIM_CUSTOMER:
+  - missing_count(SK_CUSTOMER) = 0
+  - duplicate_count(SK_CUSTOMER) = 0
+  - schema:
+      fail:
+        when required column missing:
+          - SK_CUSTOMER
+          - FIRST_NAME
+          - LAST_NAME
+          - EMAIL
+        when wrong column type:
+          SK_CUSTOMER: text
+          FIRST_NAME: text
+          LAST_NAME: text
+          EMAIL: text
+        when schema changes:
+          - column delete
+          - column add
+          - column type change
