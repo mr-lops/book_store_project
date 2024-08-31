@@ -1,0 +1,25 @@
+checks for DIM_SHIPPING:
+  - missing_count(SK_SHIPPING) = 0
+  - duplicate_count(SK_SHIPPING) = 0
+  - schema:
+      fail:
+        when required column missing:
+          - SK_SHIPPING
+          - STREET_NUMBER
+          - STREET_NAME
+          - CITY
+          - COUNTRY
+          - METHOD
+          - COST
+        when wrong column type:
+          SK_SHIPPING: varchar
+          STREET_NUMBER: varchar
+          STREET_NAME: varchar
+          CITY: varchar
+          COUNTRY: varchar
+          METHOD: varchar
+          COST: number
+        when schema changes:
+          - column delete
+          - column add
+          - column type change

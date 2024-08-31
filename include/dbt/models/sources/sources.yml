@@ -30,4 +30,5 @@ sources:
       - name: dim_customer
       - name: dim_book
       - name: dim_shipping
+      - name: dim_order
       - name: fact_sales

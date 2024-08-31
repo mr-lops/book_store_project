@@ -14,3 +14,4 @@ include/dbt/target
 include/dbt/logs
 include/dbt/.user.yml
 .vscode/
+.mypy_cache/

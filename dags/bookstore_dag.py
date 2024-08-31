@@ -6,7 +6,7 @@ from include.dbt.cosmos_config import DBT_PROJECT_CONFIG, DBT_CONFIG
 
 from cosmos.airflow.task_group import DbtTaskGroup
 from cosmos.constants import LoadMode
-from cosmos.config import RenderConfig
+from cosmos.config import RenderConfig, ExecutionConfig
 
 default_args = {
     'owner': 'airflow',
@@ -92,6 +92,8 @@ def bookstore_pipeline():
         group_id='data_warehouse',
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_CONFIG,
+        execution_config=ExecutionConfig(
+            dbt_executable_path=f"{os.environ['AIRFLOW_HOME']}/dbt_venv/bin/dbt"),
         render_config=RenderConfig(
             load_method=LoadMode.DBT_LS,
             select=['path:models/intermediate']
@@ -108,6 +110,8 @@ def bookstore_pipeline():
         group_id='report',
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_CONFIG,
+        execution_config=ExecutionConfig(
+            dbt_executable_path=f"{os.environ['AIRFLOW_HOME']}/dbt_venv/bin/dbt"),
         render_config=RenderConfig(
             load_method=LoadMode.DBT_LS,
             select=['path:models/report']
@@ -120,8 +124,8 @@ def bookstore_pipeline():
 
         return check(scan_name, checks_subpath, data_source)
     
-    mysql_to_snowflake() >> check_stage() >> data_warehouse
-    data_warehouse >> check_data_warehouse() >> report
+    # mysql_to_snowflake() >> check_stage() >> data_warehouse
+    # data_warehouse >> check_data_warehouse() >> report
     report >> check_report()
 
 

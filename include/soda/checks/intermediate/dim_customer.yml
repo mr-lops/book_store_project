@@ -9,10 +9,10 @@ checks for DIM_CUSTOMER:
           - LAST_NAME
           - EMAIL
         when wrong column type:
-          SK_CUSTOMER: text
-          FIRST_NAME: text
-          LAST_NAME: text
-          EMAIL: text
+          SK_CUSTOMER: varchar
+          FIRST_NAME: varchar
+          LAST_NAME: varchar
+          EMAIL: varchar
         when schema changes:
           - column delete
           - column add
