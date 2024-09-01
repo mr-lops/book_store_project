@@ -1,4 +1,4 @@
-
+SET NAMES 'utf8mb4';
 
 /* Find random data for order */
 /*

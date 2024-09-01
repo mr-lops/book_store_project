@@ -13,6 +13,7 @@ RUN python -m venv dbt_venv && \
     pip install --no-cache-dir dbt-snowflake==1.8.3 && \
     deactivate
 
+# install polars into a virtual environment
 RUN python -m venv polars_venv && \
     source polars_venv/bin/activate && \
     pip install --no-cache-dir polars==1.5.0 && \

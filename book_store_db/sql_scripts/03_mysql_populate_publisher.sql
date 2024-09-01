@@ -1,3 +1,5 @@
+SET NAMES 'utf8mb4';
+
 INSERT INTO publisher (publisher_name, publisher_id) VALUES
 ('10/18', 1),
 ('1st Book Library', 2),

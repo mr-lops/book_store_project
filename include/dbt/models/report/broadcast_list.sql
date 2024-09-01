@@ -2,6 +2,6 @@
     materialized='view',
 ) }}
 
-SELECT DISTINCT email,
+SELECT email,
     first_name
 FROM {{ ref('dim_customer') }}

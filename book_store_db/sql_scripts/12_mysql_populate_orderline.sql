@@ -1,3 +1,5 @@
+SET NAMES 'utf8mb4';
+
 /* Select batch of records, random book and random price between 0 and 20. */
 /*
 SELECT

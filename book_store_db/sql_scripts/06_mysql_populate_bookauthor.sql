@@ -1,3 +1,5 @@
+SET NAMES 'utf8mb4';
+
 INSERT INTO book_author (book_id, author_id) VALUES
 (1570, 2823),
 (10539, 6439),

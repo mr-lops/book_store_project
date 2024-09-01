@@ -1,3 +1,5 @@
+SET NAMES 'utf8mb4';
+
 INSERT INTO author (author_name, author_id) VALUES
 ('A. Bartlett Giamatti', 1),
 ('A. Elizabeth Delany', 2),

@@ -1,3 +1,5 @@
+SET NAMES 'utf8mb4';
+
 INSERT INTO book (title, book_id, isbn13, language_id, num_pages, publication_date, publisher_id) VALUES
 ('The World''s First Love: Mary  Mother of God', 1, '8987059752', 2, 276, '1996-09-01', 1010),
 ('The Illuminati', 2, '20049130001', 1, 352, '2004-10-04', 1967),

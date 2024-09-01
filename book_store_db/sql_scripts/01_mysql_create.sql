@@ -1,4 +1,8 @@
+SET NAMES 'utf8mb4';
+
 USE bookstoredb;
+
+DROP TABLE IF EXISTS author, publisher, book_language, book, book_author, address_status, country, address, customer, customer_address, shipping_method, cust_order, order_status, order_line, order_history;
 
 CREATE TABLE author (
     author_id INT,

@@ -5,14 +5,16 @@
 
 WITH customer_cte AS (
     SELECT DISTINCT
-        {{ dbt_utils.generate_surrogate_key(['customer_id', 'email']) }} AS sk_customer,
+        {{ dbt_utils.generate_surrogate_key(['customer_id','first_name', 'last_name', 'email']) }} AS sk_customer,
+        customer_id,
         first_name, 
         last_name, 
         email
-    FROM {{ source('book_store_stage', 'customer') }}
+    FROM {{ ref('stg_customer') }}
 )
 
 SELECT sk_customer,
+    customer_id,
     first_name, 
     last_name, 
     email,

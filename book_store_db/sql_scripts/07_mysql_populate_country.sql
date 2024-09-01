@@ -1,3 +1,5 @@
+SET NAMES 'utf8mb4';
+
 INSERT INTO country (country_id, country_name) VALUES
 (1, 'Afghanistan'),
 (2, 'Netherlands Antilles'),

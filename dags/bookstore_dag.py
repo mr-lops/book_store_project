@@ -87,7 +87,19 @@ def bookstore_pipeline():
         from include.soda.check_function import check
 
         return check(scan_name, checks_subpath, data_source)
-
+    
+    staging_area = DbtTaskGroup(
+        group_id='staging_area',
+        project_config=DBT_PROJECT_CONFIG,
+        profile_config=DBT_CONFIG,
+        execution_config=ExecutionConfig(
+            dbt_executable_path=f"{os.environ['AIRFLOW_HOME']}/dbt_venv/bin/dbt"),
+        render_config=RenderConfig(
+            load_method=LoadMode.DBT_LS,
+            select=['path:models/staging']
+        )
+    )
+    
     data_warehouse = DbtTaskGroup(
         group_id='data_warehouse',
         project_config=DBT_PROJECT_CONFIG,
@@ -124,9 +136,9 @@ def bookstore_pipeline():
 
         return check(scan_name, checks_subpath, data_source)
     
-    # mysql_to_snowflake() >> check_stage() >> data_warehouse
-    # data_warehouse >> check_data_warehouse() >> report
-    report >> check_report()
+    mysql_to_snowflake() >> check_stage() >> staging_area
+    staging_area >> data_warehouse >> check_data_warehouse() >> report
+    # report >> check_report()
 
 
 bookstore_dag = bookstore_pipeline()
