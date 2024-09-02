@@ -1,0 +1,20 @@
+checks for DIM_SHIPPING_METHOD:
+  - missing_count(SK_SHIPPING_METHOD) = 0
+  - missing_count(METHOD_ID) = 0
+  - duplicate_count(SK_SHIPPING_METHOD) = 0
+  - schema:
+      fail:
+        when required column missing:
+          - SK_SHIPPING_METHOD
+          - METHOD_ID
+          - METHOD_NAME
+          - COST
+        when wrong column type:
+          SK_SHIPPING_METHOD: varchar
+          METHOD_ID: number
+          METHOD_NAME: varchar
+          COST: number
+        when schema changes:
+          - column delete
+          - column add
+          - column type change

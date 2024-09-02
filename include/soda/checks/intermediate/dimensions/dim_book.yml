@@ -1,0 +1,30 @@
+checks for DIM_BOOK:
+  - missing_count(SK_BOOK) = 0
+  - missing_count(BOOK_ID) = 0
+  - duplicate_count(SK_BOOK) = 0
+  - schema:
+      fail:
+        when required column missing:
+          - SK_BOOK
+          - BOOK_ID
+          - TITLE
+          - ISBN13
+          - NUM_PAGES
+          - PUBLICATION_DATE
+          - LANGUAGE_NAME
+          - PUBLISHER_NAME
+          - AUTHORS
+        when wrong column type:
+          SK_BOOK: varchar
+          BOOK_ID: number
+          TITLE: varchar
+          ISBN13: varchar
+          NUM_PAGES: number
+          PUBLICATION_DATE: date
+          LANGUAGE_NAME: varchar
+          PUBLISHER_NAME: varchar
+          AUTHORS: varchar
+        when schema changes:
+          - column delete
+          - column add
+          - column type change

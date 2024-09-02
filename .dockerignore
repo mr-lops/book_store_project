@@ -11,3 +11,4 @@ book_store_db/
 snowflake.sql
 .vscode/
 .mypy_cache/
+docs/

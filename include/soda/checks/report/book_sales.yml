@@ -1,0 +1,14 @@
+checks for BOOK_SALES:
+  - missing_count(BOOK_TITLE) = 0
+  - missing_count(TOTAL_SALES) = 0
+  - missing_count(TOTAL_REVENUE) = 0
+  - schema:
+      fail:
+        when required column missing:
+          - BOOK_TITLE
+          - TOTAL_SALES
+          - TOTAL_REVENUE
+        when wrong column type:
+          BOOK_TITLE: varchar
+          TOTAL_SALES: number
+          TOTAL_REVENUE: number

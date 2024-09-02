@@ -5,7 +5,7 @@
 WITH raw_data AS (
     SELECT 
         status_id,
-        LOWER(status_value) AS status_value
+        status_value
     FROM {{ source('book_store_stage', 'order_status') }}
 )
 

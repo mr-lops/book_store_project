@@ -1,0 +1,14 @@
+checks for REVENUE_PERIOD:
+  - missing_count(YEAR) = 0
+  - missing_count(MONTH) = 0
+  - missing_count(TOTAL_REVENUE) = 0
+  - schema:
+      fail:
+        when required column missing:
+          - YEAR
+          - MONTH
+          - TOTAL_REVENUE
+        when wrong column type:
+          YEAR: number
+          MONTH: number
+          TOTAL_REVENUE: number

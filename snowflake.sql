@@ -1,23 +1,21 @@
-use role accountadmin;
+USE ROLE accountadmin;
 
-create warehouse bookstore_wh 
+CREATE WAREHOUSE bookstore_wh 
     with warehouse_size='x-small'
     auto_suspend=120
     auto_resume=true
     initially_suspended=true;
-create database if not exists bookstore_db;
-create role if not exists bookstore_role;
+CREATE DATABASE IF NOT EXISTS bookstore_db;
+CREATE ROLE IF NOT EXISTS bookstore_role;
 
-show grants on warehouse bookstore_wh;
+GRANT USAGE ON warehouse bookstore_wh TO ROLE bookstore_role;
+GRANT ROLE bookstore_role TO USER yourusername;
+GRANT ALL ON DATABASE bookstore_db TO ROLE bookstore_role;
 
-grant usage on warehouse bookstore_wh to role bookstore_role;
-grant role bookstore_role to user yourusername;
-grant all on database bookstore_db to role bookstore_role;
+USE ROLE bookstore_role;
+CREATE SCHEMA bookstore_db.stage_schema;
 
-use role bookstore_role;
-create schema bookstore_db.stage_schema;
-
-use role accountadmin;
-drop warehouse if exists bookstore_wh;
-drop database if exists bookstore_db;
-drop role if exists bookstore_role;
+USE ROLE accountadmin;
+DROP WAREHOUSE IF EXISTS bookstore_wh;
+DROP DATABASE IF EXISTS bookstore_db;
+DROP ROLE IF EXISTS bookstore_role;

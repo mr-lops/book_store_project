@@ -1,15 +1,18 @@
 checks for DIM_CUSTOMER:
   - missing_count(SK_CUSTOMER) = 0
+  - missing_count(CUSTOMER_ID) = 0
   - duplicate_count(SK_CUSTOMER) = 0
   - schema:
       fail:
         when required column missing:
           - SK_CUSTOMER
+          - CUSTOMER_ID
           - FIRST_NAME
           - LAST_NAME
           - EMAIL
         when wrong column type:
           SK_CUSTOMER: varchar
+          CUSTOMER_ID: number
           FIRST_NAME: varchar
           LAST_NAME: varchar
           EMAIL: varchar

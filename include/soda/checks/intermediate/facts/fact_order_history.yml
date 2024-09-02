@@ -1,0 +1,21 @@
+checks for FACT_ORDER_HISTORY:
+  - missing_count(SK_ORDER_HISTORY) = 0
+  - missing_count(ORDER_ID) = 0
+  - duplicate_count(SK_ORDER_HISTORY) = 0
+  - values in (SK_DATETIME) must exist in DIM_DATETIME (SK_DATETIME)
+  - schema:
+      fail:
+        when required column missing:
+          - SK_ORDER_HISTORY
+          - ORDER_ID
+          - ORDER_STATUS
+          - SK_DATETIME
+        when wrong column type:
+          SK_ORDER_HISTORY: varchar
+          ORDER_ID: number
+          ORDER_STATUS: varchar
+          SK_DATETIME: varchar
+        when schema changes:
+          - column delete
+          - column add
+          - column type change

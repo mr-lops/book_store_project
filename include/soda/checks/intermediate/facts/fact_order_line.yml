@@ -1,0 +1,28 @@
+checks for FACT_ORDER_LINE:
+  - missing_count(SK_ORDER_LINE) = 0
+  - missing_count(LINE_ID) = 0
+  - missing_count(ORDER_ID) = 0
+  - missing_count(BOOK_ID) = 0
+  - missing_count(SK_BOOK) = 0
+  - duplicate_count(SK_ORDER_LINE) = 0
+  - values in (SK_BOOK) must exist in DIM_BOOK (SK_BOOK)
+  - schema:
+      fail:
+        when required column missing:
+          - SK_ORDER_LINE
+          - LINE_ID
+          - ORDER_ID
+          - BOOK_ID
+          - PRICE
+          - SK_BOOK
+        when wrong column type:
+          SK_ORDER_LINE: VARCHAR
+          LINE_ID: NUMBER
+          ORDER_ID: NUMBER
+          BOOK_ID: NUMBER
+          PRICE: NUMBER
+          SK_BOOK: VARCHAR
+        when schema changes:
+          - column delete
+          - column add
+          - column type change

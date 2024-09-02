@@ -15,3 +15,6 @@ include/dbt/logs
 include/dbt/.user.yml
 .vscode/
 .mypy_cache/
+tests/
+plugins/
+packages.txt

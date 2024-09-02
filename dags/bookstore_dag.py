@@ -138,7 +138,7 @@ def bookstore_pipeline():
     
     mysql_to_snowflake() >> check_stage() >> staging_area
     staging_area >> data_warehouse >> check_data_warehouse() >> report
-    # report >> check_report()
+    report >> check_report()
 
 
 bookstore_dag = bookstore_pipeline()

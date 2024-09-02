@@ -1,0 +1,34 @@
+checks for DIM_DATETIME:
+  - missing_count(SK_DATETIME) = 0
+  - missing_count(DATETIME) = 0
+  - duplicate_count(SK_DATETIME) = 0
+  - schema:
+      fail:
+        when required column missing:
+          - SK_DATETIME
+          - DATETIME
+          - DAY
+          - DAY_NAME
+          - MONTH
+          - MONTH_NAME
+          - YEAR
+          - HOUR
+          - MINUTE
+          - WEEKDAY
+          - QUARTER
+        when wrong column type:
+          SK_DATETIME: varchar
+          DATETIME: timestamp_ntz
+          DAY: number
+          DAY_NAME: varchar
+          MONTH: number
+          MONTH_NAME: varchar
+          YEAR: number
+          HOUR: number
+          MINUTE: number
+          WEEKDAY: number
+          QUARTER: number
+        when schema changes:
+          - column delete
+          - column add
+          - column type change

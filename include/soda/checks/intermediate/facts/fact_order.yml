@@ -1,0 +1,36 @@
+checks for FACT_ORDER:
+  - missing_count(SK_ORDER) = 0
+  - missing_count(ORDER_ID) = 0
+  - missing_count(SK_CUSTOMER) = 0
+  - missing_count(SK_SHIPPING_METHOD) = 0
+  - missing_count(SK_ADDRESS) = 0
+  - missing_count(SK_DATETIME) = 0
+  - duplicate_count(SK_ORDER) = 0
+  - values in (SK_CUSTOMER) must exist in DIM_CUSTOMER (SK_CUSTOMER)
+  - values in (SK_SHIPPING_METHOD) must exist in DIM_SHIPPING_METHOD (SK_SHIPPING_METHOD)
+  - values in (SK_ADDRESS) must exist in DIM_ADDRESS (SK_ADDRESS)
+  - values in (SK_DATETIME) must exist in DIM_DATETIME (SK_DATETIME)
+  - schema:
+      fail:
+        when required column missing:
+          - SK_ORDER
+          - ORDER_ID
+          - SK_CUSTOMER
+          - SK_SHIPPING_METHOD
+          - SK_ADDRESS
+          - SK_DATETIME
+          - QTD_BOOKS
+          - TOTAL_AMOUNT
+        when wrong column type:
+          SK_ORDER: varchar
+          ORDER_ID: number
+          SK_CUSTOMER: varchar
+          SK_SHIPPING_METHOD: varchar
+          SK_ADDRESS: varchar
+          SK_DATETIME: varchar
+          QTD_BOOKS: number
+          TOTAL_AMOUNT: number
+        when schema changes:
+          - column delete
+          - column add
+          - column type change

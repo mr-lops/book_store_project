@@ -5,8 +5,8 @@
 WITH raw_data AS (
     SELECT 
         customer_id,
-        LOWER(first_name) AS first_name,
-        LOWER(last_name) AS last_name,
+        first_name,
+        last_name,
         email
     FROM {{ source('book_store_stage', 'customer') }}
 )
