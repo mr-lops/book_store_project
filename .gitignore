@@ -18,3 +18,4 @@ include/dbt/.user.yml
 tests/
 plugins/
 packages.txt
+README.pt-br.md
