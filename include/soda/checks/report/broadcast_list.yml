@@ -1,7 +1,6 @@
 checks for BROADCAST_LIST:
   - missing_count(FIRST_NAME) = 0
   - missing_count(EMAIL) = 0
-  - duplicate_count(FIRST_NAME) = 0
   - duplicate_count(EMAIL) = 0
   - schema:
       fail:

@@ -8,6 +8,7 @@ from cosmos.airflow.task_group import DbtTaskGroup
 from cosmos.constants import LoadMode
 from cosmos.config import RenderConfig, ExecutionConfig
 
+
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
@@ -27,18 +28,18 @@ default_args = {
     tags=["bookstore", "snowflake", "dbt"],
 )
 def bookstore_pipeline():
+    
+    SOURCE_ID = "mysql://myuser:mypassword@mysql:3306/bookstoredb"
+
+    DESTINATION_ID = (
+        f"{os.environ['SNOWFLAKE_USER']}:"
+        f"{os.environ['SNOWFLAKE_PASSWORD']}@"
+        f"{os.environ['SNOWFLAKE_ACCOUNT']}.snowflakecomputing.com:443/"
+        f"{os.environ['SNOWFLAKE_DB']}/{os.environ['SNOWFLAKE_SCHEMA']}?"
+        f"warehouse={os.environ['SNOWFLAKE_WH']}&role={os.environ['SNOWFLAKE_ROLE']}")
 
     @task_group(group_id="mysql_to_snowflake")
     def mysql_to_snowflake():
-
-        SOURCE_ID = "mysql://myuser:mypassword@mysql:3306/bookstoredb"
-
-        DESTINATION_ID = (
-            f"{os.environ['SNOWFLAKE_USER']}:"
-            f"{os.environ['SNOWFLAKE_PASSWORD']}@"
-            f"{os.environ['SNOWFLAKE_ACCOUNT']}.snowflakecomputing.com:443/"
-            f"{os.environ['SNOWFLAKE_DB']}/{os.environ['SNOWFLAKE_SCHEMA']}?"
-            f"warehouse={os.environ['SNOWFLAKE_WH']}&role={os.environ['SNOWFLAKE_ROLE']}")
 
         @task.external_python(python='/usr/local/airflow/polars_venv/bin/python')
         def get_tables_from_source(source) -> list:
@@ -135,7 +136,7 @@ def bookstore_pipeline():
         from include.soda.check_function import check
 
         return check(scan_name, checks_subpath, data_source)
-    
+
     mysql_to_snowflake() >> check_stage() >> staging_area
     staging_area >> data_warehouse >> check_data_warehouse() >> report
     report >> check_report()

@@ -7,7 +7,7 @@ SNOWFLAKE_SCHEMA='stage_schema'
 SNOWFLAKE_WH='bookstore_wh'
 SNOWFLAKE_ROLE='bookstore_role'
 
-#Soda Credentials
+# Soda Credentials
 SODA_API_KEY_ID='SodaApiKeyID'
 SODA_API_KEY_SECRET='SodaApiKeySecret'
 SODA_API_HOST='SodaApiHost' # cloud.soda.io or cloud.us.soda.io

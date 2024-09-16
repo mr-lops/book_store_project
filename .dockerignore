@@ -12,3 +12,6 @@ snowflake.sql
 .vscode/
 .mypy_cache/
 docs/
+broadcast_list.xml
+dash_book_sales.pbix
+dash_revenue_period.pbix
